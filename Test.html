@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Onboarding</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="vendorOnboarding">
+        <header class="header">
+            <div class="menuIcon">
+                <i class="fas fa-bars"></i>
+            </div>
+            <h1 class="title">Vendor Onboarding</h1>
+        </header>
+
+        <div class="container">
+            <div class="section">
+                <div class="sectionHeader" onclick="toggleSection('organisation')">
+                    <h2 class="sectionTitle">Organisation</h2>
+                    <i class="fas fa-chevron-up" id="organisationIcon"></i>
+                </div>
+                <div class="sectionContent" id="organisationContent">
+                    <div class="infoItem completed">
+                        <div class="infoIcon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="infoText">Primary Info</div>
+                    </div>
+
+                    <div class="infoItem">
+                        <div class="infoIcon">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <div class="infoText">Contact Info</div>
+                        <div class="chevronRight">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="infoItem">
+                        <div class="infoIcon">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <div class="infoText">Workplace & Workforce Info</div>
+                        <div class="chevronRight">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="infoItem">
+                        <div class="infoIcon">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <div class="infoText">Quality Assurance Info</div>
+                        <div class="chevronRight">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="infoItem">
+                        <div class="infoIcon">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <div class="infoText">Bank Details</div>
+                        <div class="chevronRight">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="infoItem">
+                        <div class="infoIcon">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <div class="infoText">Sub Vendors Details</div>
+                        <div class="chevronRight">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+
+                    <div class="infoItem">
+                        <div class="infoIcon">
+                            <i class="fas fa-info"></i>
+                        </div>
+                        <div class="infoText">Additional Information</div>
+                        <div class="chevronRight">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="sectionHeader" onclick="toggleSection('factory')">
+                    <h2 class="sectionTitle">Factory Details</h2>
+                    <i class="fas fa-chevron-down" id="factoryIcon"></i>
+                </div>
+                <div class="sectionContent collapsed" id="factoryContent">
+                    <!-- Factory Details Content -->
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="sectionHeader" onclick="toggleSection('product')">
+                    <h2 class="sectionTitle">Product Capacity</h2>
+                    <i class="fas fa-chevron-down" id="productIcon"></i>
+                </div>
+                <div class="sectionContent collapsed" id="productContent">
+                    <!-- Product Capacity Content -->
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="sectionHeader" onclick="toggleSection('financial')">
+                    <h2 class="sectionTitle">Financial Info</h2>
+                    <i class="fas fa-chevron-down" id="financialIcon"></i>
+                </div>
+                <div class="sectionContent collapsed" id="financialContent">
+                    <!-- Financial Info Content -->
+                </div>
+            </div>
+
+            <div class="termsContainer">
+                <div class="infoItem completed">
+                    <div class="infoIcon">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="infoText">Terms & Conditions</div>
+                </div>
+            </div>
+
+            <div class="buttonContainer">
+                <button class="submitButton">Submit for Review</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="Test.js"></script>
+</body>
+</html>
