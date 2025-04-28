@@ -5,220 +5,227 @@ struct TestView: View {
     @State private var factoryDetailsExpanded = false
     @State private var productCapacityExpanded = false
     @State private var financialInfoExpanded = false
-    @State private var termsAccepted = true
+    @State private var termsAccepted = false
     
     var body: some View {
-        NavigationView {
-            VStack(spacing: 0) {
-                // Navigation bar
-                HStack {
-                    Button(action: {
-                        // Menu action
-                    }) {
-                        Image(systemName: "line.horizontal.3")
-                            .foregroundColor(.white)
-                            .font(.system(size: 24))
-                    }
-                    Spacer()
-                    Text("Vendor Onboarding")
-                        .font(.title3)
-                        .fontWeight(.medium)
+        VStack(spacing: 0) {
+            // Header
+            HStack {
+                Button(action: {
+                    // Menu action
+                }) {
+                    Image(systemName: "line.horizontal.3")
                         .foregroundColor(.white)
-                    Spacer()
+                        .font(.title2)
                 }
-                .padding()
-                .background(Color(UIColor(red: 0.8, green: 0.3, blue: 0.2, alpha: 1.0)))
                 
-                ScrollView {
-                    VStack(spacing: 20) {
-                        // Organisation Section
-                        VStack(spacing: 0) {
-                            HStack {
-                                Text("Organisation")
-                                    .font(.headline)
-                                    .foregroundColor(.gray)
-                                Spacer()
+                Spacer()
+                
+                Text("Vendor Onboarding")
+                    .font(.title2)
+                    .fontWeight(.medium)
+                    .foregroundColor(.white)
+                
+                Spacer()
+            }
+            .padding()
+            .background(Color(UIColor(red: 0.83, green: 0.29, blue: 0.16, alpha: 1.0)))
+            
+            ScrollView {
+                VStack(spacing: 16) {
+                    // Organisation Section
+                    VStack(spacing: 0) {
+                        HStack {
+                            Text("Organisation")
+                                .font(.headline)
+                                .fontWeight(.medium)
+                                .foregroundColor(.black.opacity(0.7))
+                            
+                            Spacer()
+                            
+                            Button(action: {
+                                organisationExpanded.toggle()
+                            }) {
                                 Image(systemName: organisationExpanded ? "chevron.up" : "chevron.down")
                                     .foregroundColor(.gray)
                             }
-                            .padding()
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                withAnimation {
-                                    organisationExpanded.toggle()
-                                }
-                            }
-                            
-                            if organisationExpanded {
-                                VStack(spacing: 0) {
-                                    infoRow(icon: "checkmark.circle.fill", iconColor: .green, title: "Primary Info")
-                                    
-                                    Divider().padding(.leading, 60)
-                                    
-                                    infoRow(icon: "info.circle.fill", iconColor: Color(UIColor(red: 0.95, green: 0.75, blue: 0.65, alpha: 1.0)), title: "Contact Info", hasNavigation: true)
-                                    
-                                    Divider().padding(.leading, 60)
-                                    
-                                    infoRow(icon: "info.circle.fill", iconColor: Color(UIColor(red: 0.95, green: 0.75, blue: 0.65, alpha: 1.0)), title: "Workplace & Workforce Info", hasNavigation: true)
-                                    
-                                    Divider().padding(.leading, 60)
-                                    
-                                    infoRow(icon: "info.circle.fill", iconColor: Color(UIColor(red: 0.95, green: 0.75, blue: 0.65, alpha: 1.0)), title: "Quality Assurance Info", hasNavigation: true)
-                                    
-                                    Divider().padding(.leading, 60)
-                                    
-                                    infoRow(icon: "info.circle.fill", iconColor: Color(UIColor(red: 0.95, green: 0.75, blue: 0.65, alpha: 1.0)), title: "Bank Details", hasNavigation: true)
-                                    
-                                    Divider().padding(.leading, 60)
-                                    
-                                    infoRow(icon: "info.circle.fill", iconColor: Color(UIColor(red: 0.95, green: 0.75, blue: 0.65, alpha: 1.0)), title: "Sub Vendors Details", hasNavigation: true)
-                                    
-                                    Divider().padding(.leading, 60)
-                                    
-                                    infoRow(icon: "info.circle.fill", iconColor: Color(UIColor(red: 0.95, green: 0.75, blue: 0.65, alpha: 1.0)), title: "Additional Information", hasNavigation: true)
-                                }
-                            }
-                        }
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.05), radius: 2)
-                        
-                        // Factory Details Section
-                        VStack(spacing: 0) {
-                            HStack {
-                                Text("Factory Details")
-                                    .font(.headline)
-                                    .foregroundColor(.gray)
-                                Spacer()
-                                Image(systemName: factoryDetailsExpanded ? "chevron.up" : "chevron.down")
-                                    .foregroundColor(.gray)
-                            }
-                            .padding()
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                withAnimation {
-                                    factoryDetailsExpanded.toggle()
-                                }
-                            }
-                            
-                            // Hidden content for Factory Details
-                        }
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.05), radius: 2)
-                        
-                        // Product Capacity Section
-                        VStack(spacing: 0) {
-                            HStack {
-                                Text("Product Capacity")
-                                    .font(.headline)
-                                    .foregroundColor(.gray)
-                                Spacer()
-                                Image(systemName: productCapacityExpanded ? "chevron.up" : "chevron.down")
-                                    .foregroundColor(.gray)
-                            }
-                            .padding()
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                withAnimation {
-                                    productCapacityExpanded.toggle()
-                                }
-                            }
-                            
-                            // Hidden content for Product Capacity
-                        }
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.05), radius: 2)
-                        
-                        // Financial Info Section
-                        VStack(spacing: 0) {
-                            HStack {
-                                Text("Financial Info")
-                                    .font(.headline)
-                                    .foregroundColor(.gray)
-                                Spacer()
-                                Image(systemName: financialInfoExpanded ? "chevron.up" : "chevron.down")
-                                    .foregroundColor(.gray)
-                            }
-                            .padding()
-                            .contentShape(Rectangle())
-                            .onTapGesture {
-                                withAnimation {
-                                    financialInfoExpanded.toggle()
-                                }
-                            }
-                            
-                            // Hidden content for Financial Info
-                        }
-                        .background(Color.white)
-                        .cornerRadius(10)
-                        .shadow(color: Color.black.opacity(0.05), radius: 2)
-                        
-                        // Terms & Conditions
-                        HStack {
-                            Image(systemName: termsAccepted ? "checkmark.square.fill" : "square")
-                                .foregroundColor(termsAccepted ? Color(UIColor(red: 0.8, green: 0.3, blue: 0.2, alpha: 1.0)) : .gray)
-                                .font(.system(size: 24))
-                                .onTapGesture {
-                                    termsAccepted.toggle()
-                                }
-                            
-                            Text("Terms & Conditions")
-                                .font(.headline)
-                                .foregroundColor(.gray)
-                            
-                            Spacer()
                         }
                         .padding()
+                        .background(Color(UIColor.systemGray6))
                         
-                        // Submit Button
-                        Button(action: {
-                            // Submit action
-                        }) {
-                            Text("Submit for Review")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .frame(maxWidth: .infinity)
+                        if organisationExpanded {
+                            VStack(spacing: 0) {
+                                // Primary Info Row
+                                HStack {
+                                    ZStack {
+                                        Circle()
+                                            .fill(Color.green)
+                                            .frame(width: 32, height: 32)
+                                        
+                                        Image(systemName: "checkmark")
+                                            .foregroundColor(.white)
+                                    }
+                                    
+                                    Text("Primary Info")
+                                        .font(.body)
+                                        .fontWeight(.medium)
+                                        .padding(.leading, 8)
+                                    
+                                    Spacer()
+                                }
                                 .padding()
-                                .background(Color(UIColor(red: 0.8, green: 0.3, blue: 0.2, alpha: 1.0)))
-                                .cornerRadius(8)
+                                .background(Color(UIColor.systemGray6))
+                                
+                                Divider()
+                                
+                                // Contact Info Row
+                                NavigationRow(title: "Contact Info", iconBackground: Color(UIColor(red: 0.96, green: 0.7, blue: 0.6, alpha: 1.0)), iconName: "info.circle")
+                                
+                                Divider()
+                                
+                                // Workplace & Workforce Info Row
+                                NavigationRow(title: "Workplace & Workforce Info", iconBackground: Color(UIColor(red: 0.96, green: 0.7, blue: 0.6, alpha: 1.0)), iconName: "info.circle")
+                                
+                                Divider()
+                                
+                                // Quality Assurance Info Row
+                                NavigationRow(title: "Quality Assurance Info", iconBackground: Color(UIColor(red: 0.96, green: 0.7, blue: 0.6, alpha: 1.0)), iconName: "info.circle")
+                                
+                                Divider()
+                                
+                                // Bank Details Row
+                                NavigationRow(title: "Bank Details", iconBackground: Color(UIColor(red: 0.96, green: 0.7, blue: 0.6, alpha: 1.0)), iconName: "info.circle")
+                                
+                                Divider()
+                                
+                                // Sub Vendors Details Row
+                                NavigationRow(title: "Sub Vendors Details", iconBackground: Color(UIColor(red: 0.96, green: 0.7, blue: 0.6, alpha: 1.0)), iconName: "info.circle")
+                                
+                                Divider()
+                                
+                                // Additional Information Row
+                                NavigationRow(title: "Additional Information", iconBackground: Color(UIColor(red: 0.96, green: 0.7, blue: 0.6, alpha: 1.0)), iconName: "info.circle")
+                            }
                         }
-                        .padding(.horizontal)
+                    }
+                    .background(Color.white)
+                    .cornerRadius(8)
+                    .shadow(color: Color.black.opacity(0.05), radius: 2)
+                    
+                    // Factory Details Section
+                    SectionHeader(title: "Factory Details", isExpanded: $factoryDetailsExpanded)
+                    
+                    // Product Capacity Section
+                    SectionHeader(title: "Product Capacity", isExpanded: $productCapacityExpanded)
+                    
+                    // Financial Info Section
+                    SectionHeader(title: "Financial Info", isExpanded: $financialInfoExpanded)
+                    
+                    // Terms & Conditions
+                    HStack {
+                        Button(action: {
+                            termsAccepted.toggle()
+                        }) {
+                            ZStack {
+                                RoundedRectangle(cornerRadius: 3)
+                                    .stroke(Color.clear, lineWidth: 1)
+                                    .background(Color(UIColor(red: 0.83, green: 0.29, blue: 0.16, alpha: 1.0)).cornerRadius(3))
+                                    .frame(width: 24, height: 24)
+                                
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.white)
+                            }
+                        }
+                        
+                        Text("Terms & Conditions")
+                            .font(.body)
+                            .fontWeight(.medium)
+                            .padding(.leading, 8)
+                        
+                        Spacer()
                     }
                     .padding()
+                    
+                    // Submit Button
+                    Button(action: {
+                        // Submit action
+                    }) {
+                        Text("Submit for Review")
+                            .font(.headline)
+                            .fontWeight(.medium)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color(UIColor(red: 0.83, green: 0.29, blue: 0.16, alpha: 1.0)))
+                            .cornerRadius(8)
+                    }
+                    .padding(.horizontal)
+                    .padding(.bottom, 20)
                 }
-                .background(Color(UIColor.systemGroupedBackground))
+                .padding()
             }
-            .edgesIgnoringSafeArea(.top)
         }
+        .edgesIgnoringSafeArea(.top)
     }
+}
+
+struct NavigationRow: View {
+    let title: String
+    let iconBackground: Color
+    let iconName: String
     
-    // Helper function to create info rows
-    private func infoRow(icon: String, iconColor: Color, title: String, hasNavigation: Bool = false) -> some View {
+    var body: some View {
         HStack {
-            Image(systemName: icon)
-                .foregroundColor(iconColor)
-                .font(.system(size: 24))
-                .frame(width: 36, height: 36)
-                .background(iconColor.opacity(0.2))
-                .cornerRadius(18)
-                .padding(.leading, 16)
+            ZStack {
+                Circle()
+                    .fill(iconBackground)
+                    .frame(width: 32, height: 32)
+                
+                Image(systemName: iconName)
+                    .foregroundColor(.white)
+            }
             
             Text(title)
                 .font(.body)
-                .foregroundColor(.gray)
+                .fontWeight(.medium)
                 .padding(.leading, 8)
             
             Spacer()
             
-            if hasNavigation {
-                Image(systemName: "chevron.right")
-                    .foregroundColor(.gray)
-                    .padding(.trailing)
-            }
+            Image(systemName: "chevron.right")
+                .foregroundColor(.gray)
         }
-        .padding(.vertical, 12)
+        .padding()
+        .background(Color(UIColor.systemGray6))
+    }
+}
+
+struct SectionHeader: View {
+    let title: String
+    @Binding var isExpanded: Bool
+    
+    var body: some View {
+        Button(action: {
+            isExpanded.toggle()
+        }) {
+            HStack {
+                Text(title)
+                    .font(.headline)
+                    .fontWeight(.medium)
+                    .foregroundColor(.black.opacity(0.7))
+                
+                Spacer()
+                
+                Image(systemName: isExpanded ? "chevron.up" : "chevron.down")
+                    .foregroundColor(.gray)
+            }
+            .padding()
+            .background(Color(UIColor.systemGray6))
+        }
+        .frame(maxWidth: .infinity)
+        .background(Color.white)
+        .cornerRadius(8)
+        .shadow(color: Color.black.opacity(0.05), radius: 2)
     }
 }
 
