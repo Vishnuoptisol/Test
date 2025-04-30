@@ -1,97 +1,66 @@
-```swift
+Here's the Swift code to recreate the UI shown in the image:
+
 import SwiftUI
 
 struct TestView: View {
     var body: some View {
-        VStack(spacing: 0) {
-            // Header with path information
-            VStack(alignment: .leading, spacing: 4) {
-                Text("Chittorgarh → package I → OHSR → 100KL → 18M → Jawada → Plinth Protection")
-                    .font(.system(size: 16, weight: .medium))
-                    .padding(.vertical, 12)
-                    .padding(.horizontal)
-                    .multilineTextAlignment(.leading)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-            }
-            .background(Color(UIColor.systemGray6))
-            .clipShape(RoundedRectangle(cornerRadius: 10))
-            
-            Divider()
+        VStack(alignment: .leading, spacing: 16) {
+            Text("Chittorgarh → package I → OHSR → 100KL → 18M → Jawada → Plinth Protection")
+                .font(.system(size: 14, weight: .medium))
+                .lineLimit(2)
                 .padding(.horizontal)
             
-            // Content
-            VStack(alignment: .leading, spacing: 16) {
-                // First row
+            VStack(spacing: 12) {
                 HStack {
                     Text("Man")
-                        .frame(width: 60, alignment: .leading)
-                        .foregroundColor(.gray)
-                    
-                    Text("QTY")
-                        .frame(width: 60, alignment: .leading)
-                        .foregroundColor(.gray)
-                    
-                    Text("UOM")
-                        .frame(width: 60, alignment: .leading)
-                        .foregroundColor(.gray)
-                    
                     Spacer()
-                    
+                    Text("QTY")
+                    Spacer()
+                    Text("UOM")
+                    Spacer()
                     Text("Date")
-                        .foregroundColor(.gray)
                 }
-                .padding(.horizontal)
+                .font(.system(size: 14, weight: .regular))
+                .foregroundColor(.gray)
                 
-                // Second row
                 HStack {
                     Text("1")
-                        .frame(width: 60, alignment: .leading)
-                    
-                    Text("5")
-                        .frame(width: 60, alignment: .leading)
-                    
-                    Text("m3")
-                        .frame(width: 60, alignment: .leading)
-                    
                     Spacer()
-                    
+                    Text("5")
+                    Spacer()
+                    Text("m3")
+                    Spacer()
                     Text("11/01/2025")
                 }
-                .padding(.horizontal)
+                .font(.system(size: 14, weight: .regular))
                 
-                // Third row
                 HStack {
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("WP")
-                            .foregroundColor(.gray)
-                        
-                        Text("ESR - 100KL - 18M - Jawada")
-                            .font(.system(size: 16, weight: .medium))
-                    }
-                    
+                    Text("WP")
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundColor(.gray)
                     Spacer()
-                    
-                    VStack(alignment: .trailing, spacing: 4) {
-                        Text("Status")
-                            .foregroundColor(.gray)
-                        
-                        Text("Approved")
-                            .font(.system(size: 14))
-                            .foregroundColor(.black)
-                            .padding(.horizontal, 12)
-                            .padding(.vertical, 6)
-                            .background(Color(UIColor.systemGray5))
-                            .cornerRadius(4)
-                    }
+                    Text("Status")
+                        .font(.system(size: 14, weight: .regular))
+                        .foregroundColor(.gray)
                 }
-                .padding(.horizontal)
                 
+                HStack {
+                    Text("ESR - 100KL - 18M - Jawada")
+                        .font(.system(size: 14, weight: .regular))
+                    Spacer()
+                    Text("Approved")
+                        .font(.system(size: 14, weight: .medium))
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 4)
+                        .background(Color.green.opacity(0.2))
+                        .cornerRadius(4)
+                }
             }
-            .padding(.vertical, 12)
+            .padding()
         }
         .background(Color.white)
-        .cornerRadius(10)
-        .shadow(color: Color.black.opacity(0.1), radius: 2, x: 0, y: 1)
+        .cornerRadius(12)
+        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
         .padding()
     }
 }
@@ -101,4 +70,3 @@ struct TestView_Previews: PreviewProvider {
         TestView()
     }
 }
-```
